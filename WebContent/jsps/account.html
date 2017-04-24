@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+    <title>帐户</title>
+	
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"  type="text/css">
+	
+	<!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+	
+	
+	<!-- Custom Fonts -->
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"  type="text/css">
+    <link rel="stylesheet" href="fonts/font-slider.css" type="text/css">
+	
+	<!-- jQuery and Modernizr-->
+	<script src="js/jquery-2.1.1.js"></script>
+	
+	<!-- Core JavaScript Files -->  	 
+    <script src="js/bootstrap.min.js"></script>
+	
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+	<!--Top-->
+	<nav id="top">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6">
+				</div>
+				<div class="col-xs-6">
+					<ul class="top-link">
+						<li><a href="account.html"><span class="glyphicon glyphicon-user"></span> 帐户</a></li>
+						<li><a href="contact.html"><span class="glyphicon glyphicon-envelope"></span> 联系我们</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<!--Header-->
+	<header class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div id="logo"><img src="images/logo.png" /></div>
+			</div>
+			<div class="col-md-4">
+				<form class="form-search">  
+					<input type="text" class="input-medium search-query" placeholder="书名、作者"> 
+					<button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>  
+				</form>
+			</div>
+			<div class="col-md-4">
+				<div id="cart"><a class="btn btn-1" href="cart.html"><span class="glyphicon glyphicon-shopping-cart"></span>购物车</a></div>
+			</div>
+		</div>
+	</header>
+	<!--Navigation-->
+    <nav id="menu" class="navbar">
+		<div class="container">
+			<div class="navbar-header"><span id="heading" class="visible-xs">Categories</span>
+			  <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+			</div>
+			<div class="collapse navbar-collapse navbar-ex1-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="index.html">主页</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">分类导航</a>
+						<div class="dropdown-menu">
+							<div class="dropdown-inner">
+								<ul class="list-unstyled">
+									<li><a href="computer.html">计算机</a></li>
+									<li><a href="math.html">数学</a></li>
+									<li><a href="physics.html">物理</a></li>
+								</ul>
+								<ul class="list-unstyled">
+									<li><a href="economist.html">经济管理</a></li>
+									<li><a href="language.html">语言</a></li>
+									<li><a href="law.html">法学</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li><a href="service.html">服务介绍</a>
+					</li>
+					<li><a href="contact.html">联系我们</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!--//////////////////////////////////////////////////-->
+	<!--///////////////////Account Page///////////////////-->
+	<!--//////////////////////////////////////////////////-->
+	<div id="page-content" class="single-page">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="heading"><h2>登录</h2></div>
+					<form name="form1" id="ff1" method="post" action="login.php">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="用户名 :" name="username" id="username" required>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="密码 :" name="email" id="email" required>
+						</div>
+						<button type="submit" class="btn btn-1" name="login" id="login">登录</button>
+						<a href="#">忘记密码 ?</a>
+					</form>
+				</div>
+				<div class="col-md-6">
+					<div class="heading"><h2>新用户 ? 创建帐号.</h2></div>
+					<form name="form2" id="ff2" method="post" action="register.php">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="姓名 :" name="firstname" id="firstname" required>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="昵称 :" name="lastname" id="lastname" required>
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control" placeholder="邮箱 :" name="email" id="email" required>
+						</div>
+						<div class="form-group">
+							<input type="tel" class="form-control" placeholder="手机 :" name="phone" id="phone" required>
+						</div>
+						<div class="form-group">
+							<input name="gender" id="gender" type="radio"> 男 <input name="gender" id="gender" type="radio"> 女 
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="密码 :" name="password" id="password" required>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" placeholder="确认密码 :" name="repassword" id="repassword" required>
+						</div>
+						<div class="form-group">
+							<input name="agree" id="agree" type="checkbox" > I agree to your website.
+						</div>
+						<button type="submit" class="btn btn-1">创建</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="wrap-footer">
+				<div class="row">
+					<div class="col-md-3 col-footer footer-4">
+						<div class="heading"><h4>Contact Us</h4></div>
+						<ul>
+							<p><span class="glyphicon glyphicon-home"></span> 北京, 中国 100044</p>
+							<p><span class="glyphicon glyphicon-earphone"></span> +6221 888  , +6221 888 </p>
+							<p><span class="glyphicon glyphicon-envelope"></span> info@yourdomain.com</p>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
