@@ -8,10 +8,36 @@ import java.util.ArrayList;
  *
  */
 public class Book {
-private String bookId; //书籍id
-private String bookName;//书籍名称
-private ArrayList<String> pictureId;//图片id
-private String price;//书籍价格
-//private String sc
+	
+	private String id;
+	private String name;
+	private String price;
+	private ArrayList<Picture> pictures;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	public ArrayList<Picture> getPictures() {
+		return pictures;
+	}
+	public void setPictures(ArrayList<Picture> pictures) {
+		this.pictures = pictures;
+	}
+
 	
 }
