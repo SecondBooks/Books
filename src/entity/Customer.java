@@ -5,9 +5,13 @@ public class Customer extends User{
 	private String name;
 	private String phone;
 	private String email;
-	private School school;
+	private String school;
 	
-	public Customer(String account, String password) {
+	public Customer() {
+        super();
+    }
+	
+    public Customer(String account, String password) {
 		super();
 		this.setAccount(account);
 		this.setPassword(password);
@@ -15,7 +19,7 @@ public class Customer extends User{
 		this.name = "empty";
 		this.phone = "empty";
 		this.email = "empty";
-		this.school = null;
+		this.school = "empty";
 	}
 	public String getName() {
 		return name;
@@ -35,10 +39,10 @@ public class Customer extends User{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public School getSchool() {
+	public String getSchool() {
 		return school;
 	}
-	public void setSchool(School school) {
+	public void setSchool(String school) {
 		this.school = school;
 	}
 	
