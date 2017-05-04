@@ -1,6 +1,6 @@
 package service;
 
-public interface CustomerService {
+public interface UserService {
 	
 	public boolean register(String account, String password);//处理注册的业务逻辑
 	public boolean login(String account, String password);//处理登陆的业务逻辑

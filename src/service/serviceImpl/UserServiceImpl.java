@@ -3,9 +3,9 @@ package service.serviceImpl;
 import dao.CustomerDAO;
 import dao.daoImpl.CustomerDAOImpl;
 import entity.Customer;
-import service.CustomerService;
+import service.UserService;
 
-public class CustomerServiceImpl implements CustomerService {
+public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean register(String account, String password) {
