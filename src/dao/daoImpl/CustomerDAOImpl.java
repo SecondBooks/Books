@@ -18,9 +18,9 @@ public class CustomerDAOImpl implements CustomerDAO {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "insert into customers (account, password, type, name, phone, email, school) values (?,?,?,?,?,?,?)";
+            String sql = "insert into users (account, password, type, name, phone, email, school) values (?,?,?,?,?,?,?)";
+            
             PreparedStatement pstmt;
-
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             pstmt.setString(1, customer.getAccount());
             pstmt.setString(2, customer.getPassword());
@@ -29,8 +29,9 @@ public class CustomerDAOImpl implements CustomerDAO {
             pstmt.setString(5, customer.getPhone());
             pstmt.setString(6, customer.getEmail());
             pstmt.setString(7, customer.getSchool());
-            System.out.println("insert "+ pstmt.executeUpdate() + "line");
-
+            pstmt.execute();
+            
+            pstmt.close();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -43,19 +44,17 @@ public class CustomerDAOImpl implements CustomerDAO {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "insert into customers (account, password, type, name, phone, email, school) values (?,?,?,?,?,?,?)";
+            String sql = "update users set name='"+customer.getName()+
+                                "',phone='"+customer.getPhone()+
+                                "',email='"+customer.getEmail()+
+                                "',school='"+customer.getSchool()+
+                                "' where account='"+customer.getAccount()+"';";
+          
             PreparedStatement pstmt;
-
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
-            pstmt.setString(1, customer.getAccount());
-            pstmt.setString(2, customer.getPassword());
-            pstmt.setString(3, customer.getType());
-            pstmt.setString(4, customer.getName());
-            pstmt.setString(5, customer.getPhone());
-            pstmt.setString(6, customer.getEmail());
-            pstmt.setString(7, customer.getSchool());
-            System.out.println("insert "+ pstmt.executeUpdate() + "line");
-
+            pstmt.executeUpdate();
+            
+            pstmt.close();
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -69,9 +68,9 @@ public class CustomerDAOImpl implements CustomerDAO {
         Customer customer = new Customer();
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "select account, password, type, name, phone, email, school from customers where account = '" + account + "';";
-            PreparedStatement pstmt;
+            String sql = "select account, password, type, name, phone, email, school from users where account = '" + account + "';";
             
+            PreparedStatement pstmt;
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
   
@@ -84,7 +83,8 @@ public class CustomerDAOImpl implements CustomerDAO {
                 customer.setEmail(rs.getString(6));
                 customer.setSchool(rs.getString(7));
             }
-
+            
+            pstmt.close();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -98,7 +98,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         ArrayList<Customer> customers = new ArrayList<Customer>();
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "select account, password, type, name, phone, email, school from customers;";
+            String sql = "select account, password, type, name, phone, email, school from users;";
             PreparedStatement pstmt;
             
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -115,7 +115,8 @@ public class CustomerDAOImpl implements CustomerDAO {
                 customer.setSchool(rs.getString(7));
                 customers.add(customer);
             }
-
+            
+            pstmt.close();
         } catch (Exception e) {
             e.printStackTrace();
             return null;

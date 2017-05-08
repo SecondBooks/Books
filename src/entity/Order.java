@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Order {
 	
-	private String id;
+	private int id;
 	private ArrayList<Item> items;
 	private float totalPrice;
 	private String date;
 	
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public ArrayList<Item> getItems() {
