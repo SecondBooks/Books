@@ -1,19 +1,22 @@
 package service.serviceImpl;
 
-import service.UsersService;
+import dao.CustomerDAO;
+import dao.daoImpl.CustomerDAOImpl;
+import entity.Customer;
+import service.UserService;
 
-public class UsersServiceImpl implements UsersService {
+public class UserServiceImpl implements UserService {
 
 	@Override
-	public boolean register() {
+	public boolean register(String account, String password) {
 		// TODO Auto-generated method stub
-		return false;
+		Customer customer = new Customer(account, password);
+		CustomerDAO customerDAOImpl = new CustomerDAOImpl();
+		return customerDAOImpl.register(customer);
 	}
 
-
-
 	@Override
-	public boolean login() {
+	public boolean login(String account, String password) {
 		// TODO Auto-generated method stub
 		return false;
 	}
