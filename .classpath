@@ -17,5 +17,6 @@
 	<classpathentry kind="lib" path="D:/GitHub/Books2/Books/WebContent/WEB-INF/lib/catalina.jar"/>
 	<classpathentry kind="lib" path="D:/GitHub/Books2/Books/WebContent/WEB-INF/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="D:/GitHub/Books2/Books/WebContent/WEB-INF/lib/jasper.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

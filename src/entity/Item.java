@@ -4,7 +4,6 @@ public class Item {
 	
 	private String Account;
 	private Book book;
-	private int status;
 	private int number;
 	private float totalPrice;
 	
@@ -19,12 +18,6 @@ public class Item {
 	}
 	public void setBook(Book book) {
 		this.book = book;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
 	}
 	public int getNumber() {
 		return number;
