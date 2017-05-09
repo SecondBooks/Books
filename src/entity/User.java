@@ -4,12 +4,12 @@ public class User {
 	
 	private String account;
 	private String password;
-	private String type;
+	private int type;
 	
-	public String getType() {
+	public int getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 	public String getAccount() {

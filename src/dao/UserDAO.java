@@ -7,8 +7,7 @@ package dao;
  *
  */
 public interface UserDAO {
-
-	public boolean changePassword(String id, String newPassword);
-	public boolean changeType(String id);
+    //ÓÃ»§ĞŞ¸ÄÃÜÂë
+	public boolean changePassword(String account, String newPassword);
 	
 }

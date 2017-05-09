@@ -2,13 +2,13 @@ package entity;
 
 public class School {
 	
-	private String schoolId;
+	private int schoolId;
 	private String schoolName;
 	
-	public String getSchoolId() {
+	public int getSchoolId() {
 		return schoolId;
 	}
-	public void setSchoolId(String schoolId) {
+	public void setSchoolId(int schoolId) {
 		this.schoolId = schoolId;
 	}
 	public String getSchoolName() {

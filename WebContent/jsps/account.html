@@ -108,12 +108,12 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="heading"><h2>登录</h2></div>
-					<form name="form1" id="ff1" method="post" action="login.php">
+					<form name="form1" id="ff1" method="post" action="do_login.jsp">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="用户名 :" name="username" id="username" required>
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control" placeholder="密码 :" name="email" id="email" required>
+							<input type="password" class="form-control" placeholder="密码 :" name="password" id="password" required>
 						</div>
 						<button type="submit" class="btn btn-1" name="login" id="login">登录</button>
 						<a href="#">忘记密码 ?</a>
@@ -121,12 +121,15 @@
 				</div>
 				<div class="col-md-6">
 					<div class="heading"><h2>新用户 ? 创建帐号.</h2></div>
-					<form name="form2" id="ff2" method="post" action="register.php">
+					<form name="form2" id="ff2" method="post" action="do_login.jsp">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="姓名 :" name="firstname" id="firstname" required>
+							<input type="text" class="form-control" placeholder="用户名 :" name="username" id="username" required>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="昵称 :" name="lastname" id="lastname" required>
+							<input type="password" class="form-control" placeholder="密码 :" name="password" id="password" required>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="昵称 :" name="name" id="name" required>
 						</div>
 						<div class="form-group">
 							<input type="email" class="form-control" placeholder="邮箱 :" name="email" id="email" required>
@@ -135,6 +138,9 @@
 							<input type="tel" class="form-control" placeholder="手机 :" name="phone" id="phone" required>
 						</div>
 						<div class="form-group">
+							<input type="school" class="form-control" placeholder="学校 :" name="school" id="school" required>
+						</div>
+						<!--<div class="form-group">
 							<input name="gender" id="gender" type="radio"> 男 <input name="gender" id="gender" type="radio"> 女 
 						</div>
 						<div class="form-group">
@@ -145,7 +151,7 @@
 						</div>
 						<div class="form-group">
 							<input name="agree" id="agree" type="checkbox" > I agree to your website.
-						</div>
+						</div> -->
 						<button type="submit" class="btn btn-1">创建</button>
 					</form>
 				</div>
@@ -158,11 +164,11 @@
 				<div class="row">
 					<div class="col-md-3 col-footer footer-4">
 						<div class="heading"><h4>Contact Us</h4></div>
-						<ul>
+						<!--<ul>
 							<p><span class="glyphicon glyphicon-home"></span> 北京, 中国 100044</p>
 							<p><span class="glyphicon glyphicon-earphone"></span> +6221 888  , +6221 888 </p>
 							<p><span class="glyphicon glyphicon-envelope"></span> info@yourdomain.com</p>
-						</ul>
+						</ul>-->
 					</div>
 				</div>
 			</div>
