@@ -3,7 +3,7 @@ package entity;
 public class Comment {
 	
 	private String account;
-	private String bookId;
+	private int bookId;
 	private String content;
 	private String date;
 	
@@ -13,10 +13,10 @@ public class Comment {
 	public void setAccount(String account) {
 		this.account = account;
 	}
-	public String getBookId() {
+	public int getBookId() {
 		return bookId;
 	}
-	public void setBookId(String bookId) {
+	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
 	public String getContent() {

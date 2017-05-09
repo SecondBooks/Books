@@ -3,19 +3,13 @@ package entity;
 
 public class Picture {
 	
-	private String picId;
+	private int picId;
 	private String picAddress;
 	
-	public Picture(String picId, String picAddress) {
-		super();
-		this.picId = picId;
-		this.picAddress = picAddress;
-	}
-	
-	public String getPicId() {
+	public int getPicId() {
 		return picId;
 	}
-	public void setPicId(String picId) {
+	public void setPicId(int picId) {
 		this.picId = picId;
 	}
 	public String getPicAddress() {
