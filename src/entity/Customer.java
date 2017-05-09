@@ -15,7 +15,7 @@ public class Customer extends User{
 		super();
 		this.setAccount(account);
 		this.setPassword(password);
-		this.setType("customer");
+		this.setType(1);
 		this.name = "empty";
 		this.phone = "empty";
 		this.email = "empty";

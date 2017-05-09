@@ -18,18 +18,19 @@ public class CustomerDAOImpl implements CustomerDAO {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "insert into users (account, password, type, name, phone, email, school) values (?,?,?,?,?,?,?)";
+            String sql = "insert into users (account, password, type, name, phone, email, school) values (?,?,?,?,?,?,?);";
             
             PreparedStatement pstmt;
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             pstmt.setString(1, customer.getAccount());
             pstmt.setString(2, customer.getPassword());
-            pstmt.setString(3, customer.getType());
+            pstmt.setInt(3, customer.getType());
             pstmt.setString(4, customer.getName());
             pstmt.setString(5, customer.getPhone());
             pstmt.setString(6, customer.getEmail());
             pstmt.setString(7, customer.getSchool());
             pstmt.execute();
+            
             
             pstmt.close();
         } catch (Exception e) {
@@ -77,7 +78,7 @@ public class CustomerDAOImpl implements CustomerDAO {
             while (rs.next()) {
                 customer.setAccount(rs.getString(1));
                 customer.setPassword(rs.getString(2));
-                customer.setType(rs.getString(3));
+                customer.setType(rs.getInt(3));
                 customer.setName(rs.getString(4));
                 customer.setPhone(rs.getString(5));
                 customer.setEmail(rs.getString(6));
@@ -108,7 +109,7 @@ public class CustomerDAOImpl implements CustomerDAO {
                 Customer customer = new Customer();
                 customer.setAccount(rs.getString(1));
                 customer.setPassword(rs.getString(2));
-                customer.setType(rs.getString(3));
+                customer.setType(rs.getInt(3));
                 customer.setName(rs.getString(4));
                 customer.setPhone(rs.getString(5));
                 customer.setEmail(rs.getString(6));

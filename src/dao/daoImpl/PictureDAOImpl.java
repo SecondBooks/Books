@@ -73,7 +73,6 @@ public class PictureDAOImpl implements PictureDAO {
             }
             
             pstmt.close();
-            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -101,7 +100,6 @@ public class PictureDAOImpl implements PictureDAO {
             }
             
             pstmt.close();
-            conn.close();
         } catch (Exception e) {
             e.printStackTrace();
             return null;

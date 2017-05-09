@@ -15,6 +15,17 @@ public class Book {
     private String introduction;
     private float price;
     private ArrayList<Picture> pictures;
+    
+    public Book(){
+        
+    }
+    
+    public Book(String name, String author, String introduction, float price) {
+       setName(name);
+       setAuthor(author);
+       setIntroduction(introduction);
+       setPrice(price);
+    }
 
     public String getAuthor() {
         return author;
@@ -63,5 +74,8 @@ public class Book {
     public void setPictures(ArrayList<Picture> pictures) {
         this.pictures = pictures;
     }
-
+    
+    public String toString(){
+        return "Id: "+ id +"\nName: " + name + "\nAuthor: " + author + "\nIntroduction: " + introduction + "\nPrice: " + price + "\n-----------------------------------\n";
+    }
 }
