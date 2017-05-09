@@ -18,7 +18,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "insert into customers (account, password, type, name, phone, email, school) values (?,?,?,?,?,?,?)";
+            String sql = "insert into users (account, password, type, name, phone, email, school) values (?,?,?,?,?,?,?)";
             PreparedStatement pstmt;
 
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
