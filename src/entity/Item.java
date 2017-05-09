@@ -2,29 +2,40 @@ package entity;
 
 public class Item {
 	
-	private String Account;
+    private int id;
+	private String account;
 	private Book book;
-	private int status;
 	private int number;
 	private float totalPrice;
 	
-	public String getAccount() {
-		return Account;
+	public Item(){
+	    
+	}
+	
+	public Item(String account, Book book, int number) {
+	    setAccount(account);
+	    setBook(book);
+	    setNumber(number);
+	    totalPrice = getNumber() * book.getPrice();
+    }
+	
+    public int getId() {
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
+    public String getAccount() {
+		return account;
 	}
 	public void setAccount(String account) {
-		Account = account;
+		this.account = account;
 	}
 	public Book getBook() {
 		return book;
 	}
 	public void setBook(Book book) {
 		this.book = book;
-	}
-	public int getStatus() {
-		return status;
-	}
-	public void setStatus(int status) {
-		this.status = status;
 	}
 	public int getNumber() {
 		return number;
@@ -38,7 +49,4 @@ public class Item {
 	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	
-	
-	
 }
