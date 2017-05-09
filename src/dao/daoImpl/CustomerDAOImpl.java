@@ -19,7 +19,7 @@ public class CustomerDAOImpl implements CustomerDAO {
         try {
             Connection conn = DBHelper.getConnection();
             String sql = "insert into users (account, password, type, name, phone, email, school) values (?,?,?,?,?,?,?);";
-            
+
             PreparedStatement pstmt;
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             pstmt.setString(1, customer.getAccount());
