@@ -6,32 +6,27 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import dao.PictureDAO;
-import entity.Customer;
+import dao.SchoolDAO;
+import entity.Book;
 import entity.Picture;
+import entity.School;
 import util.DBHelper;
 
-public class PictureDAOImpl implements PictureDAO {
-    
-    //DBHelper dbh = new DBHelper();
-    
+public class SchoolDAOImpl implements SchoolDAO {
+
     @Override
-    public Boolean addPic(int bookId, Picture picture) {
+    public boolean addSchool(School school) {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            //String sql = "insert into pictures (bookid, id, address) values (?,?,?)";
-            String sql = "insert into pictures (bookid, address) values (?,?)";
-            PreparedStatement pstmt;
+            String sql = "insert into schools (school) values (?);";
 
+            PreparedStatement pstmt;
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
-            pstmt.setInt(1, bookId);
-            pstmt.setString(2, picture.getPicAddress());
-            //pstmt.setInt(2, picture.getPicId());
-            //pstmt.setString(3, picture.getPicAddress());
+            pstmt.setString(1, school.getSchoolName());
             pstmt.execute();
-            
+
             pstmt.close();
-        
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -40,12 +35,11 @@ public class PictureDAOImpl implements PictureDAO {
     }
 
     @Override
-    public Boolean delPic(int picId) {
+    public boolean delSchool(int schoolId) {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            //String sql = "delete from pictures where id = '" + picId + "';";
-            String sql = "delete from pictures where id = " + picId + ";";
+            String sql = "delete from schools where id = " + schoolId + ";";
             PreparedStatement pstmt;
             
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -60,56 +54,53 @@ public class PictureDAOImpl implements PictureDAO {
     }
 
     @Override
-    public Picture getPic(int picId) {
+    public String getSchoolName(int schoolId) {
         // TODO 自动生成的方法存根
-        Picture pic = new Picture();
+        School school = new School();
         try {
             Connection conn = DBHelper.getConnection();
-            //String sql = "select id, address from pictures where id = '" + picId + "';";
-            String sql = "select id, address from pictures where id = " + picId + ";";
+            String sql = "select * from schools where id = "+ schoolId +";";
+
             PreparedStatement pstmt;
-            
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
-  
-            while (rs.next()) {
-                pic.setPicId(rs.getInt(1));
-                pic.setPicAddress(rs.getString(2));
-            }
             
+            while (rs.next()) {
+                school.setSchoolId(rs.getInt(1));
+                school.setSchoolName(rs.getString(2));
+            }
             pstmt.close();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-        return pic;
+        return school.getSchoolName();
     }
 
     @Override
-    public ArrayList<Picture> getPicOfBook(int bookId) {
-        // TODO 自动生成的方法存根
-        ArrayList<Picture> pics = new ArrayList<Picture>();
+    public ArrayList<School> getAllSchool() {
+        // TODO 自动生成的方法存根        
+        ArrayList<School> schools = new ArrayList<School>();
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "select id, address from pictures where bookid = "+ bookId +";";
+            String sql = "select * from schools;";
+
             PreparedStatement pstmt;
-            
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
-  
-            while (rs.next()) {
-                Picture pic = new Picture();
-                pic.setPicId(rs.getInt(1));
-                pic.setPicAddress(rs.getString(2));
-                pics.add(pic);
-            }
             
+            while (rs.next()) {
+                School school = new School();
+                school.setSchoolId(rs.getInt(1));
+                school.setSchoolName(rs.getString(2));
+                schools.add(school);
+            }
             pstmt.close();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-        return pics;
+        return schools;
     }
 
 }

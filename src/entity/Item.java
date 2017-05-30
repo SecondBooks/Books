@@ -49,4 +49,11 @@ public class Item {
 	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+	public String toString(){
+	    String str = "Id: " + id + "      Account: " + account + "\n" +
+	                         "Book name: " + book.getName() + "      Number: " + number + "\n" +
+	                         "Total price: " + totalPrice ;
+	    return str;
+	}
 }

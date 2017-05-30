@@ -11,7 +11,7 @@ import util.DBHelper;
 
 public class CustomerDAOImpl implements CustomerDAO {
 
-    DBHelper dbh = new DBHelper();
+    //DBHelper dbh = new DBHelper();
 
     @Override
     public boolean register(Customer customer) {

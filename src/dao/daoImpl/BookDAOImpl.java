@@ -15,7 +15,7 @@ import util.DateHelper;
 
 public class BookDAOImpl implements BookDAO {
 
-    DBHelper dbh = new DBHelper();
+    //DBHelper dbh = new DBHelper();
 
     @Override
     public boolean addBook(Book book) {
@@ -54,7 +54,19 @@ public class BookDAOImpl implements BookDAO {
     @Override
     public boolean delBook(int bookId) {
         // TODO 自动生成的方法存根
-        return false;
+        try {
+            Connection conn = DBHelper.getConnection();
+            String sql = "delete from books where id = " + bookId + ";";
+            PreparedStatement pstmt;
+            
+            pstmt = (PreparedStatement) conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+  
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     @Override

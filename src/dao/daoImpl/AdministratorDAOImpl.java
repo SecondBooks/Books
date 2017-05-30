@@ -3,25 +3,22 @@ package dao.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import dao.UserDAO;
+import dao.AdministratorDAO;
 import util.DBHelper;
 
-public class UserDAOImpl implements UserDAO{
-    
-    //DBHelper dbh = new DBHelper();
-    
+public class AdministratorDAOImpl implements AdministratorDAO {
+
     @Override
-    public boolean changePassword(String account, String newPassword) {
+    public boolean delUser(String account) {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "update users set password='"+newPassword+ "' where account='"+account+"';";
-          
+            String sql = "delete from users where account = '" + account + "';";
             PreparedStatement pstmt;
+            
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             pstmt.executeUpdate();
-            
-            pstmt.close();
+  
         } catch (Exception e) {
             e.printStackTrace();
             return false;

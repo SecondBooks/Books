@@ -23,9 +23,9 @@ public class testBookDAOImpl {
         bookDAO.addBook(book);
     }
 
-   @Test
+   //@Test
     public void testDelBook() {
-        fail("ипн╢й╣ож");
+        bookDAO.delBook(2);
     }
 
     //@Test
