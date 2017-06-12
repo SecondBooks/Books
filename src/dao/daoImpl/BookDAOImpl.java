@@ -3,6 +3,7 @@ package dao.daoImpl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.BookDAO;
@@ -15,14 +16,14 @@ import util.DateHelper;
 
 public class BookDAOImpl implements BookDAO {
 
-    //DBHelper dbh = new DBHelper();
+    // DBHelper dbh = new DBHelper();
 
     @Override
     public boolean addBook(Book book) {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "insert into books (name, author, introduction, price) values (?,?,?,?);";
+            String sql = "insert into books (name, author, introduction, price, saled) values (?,?,?,?,0);";
 
             PreparedStatement pstmt;
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -58,10 +59,10 @@ public class BookDAOImpl implements BookDAO {
             Connection conn = DBHelper.getConnection();
             String sql = "delete from books where id = " + bookId + ";";
             PreparedStatement pstmt;
-            
+
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             pstmt.executeUpdate();
-  
+
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -159,6 +160,16 @@ public class BookDAOImpl implements BookDAO {
                 pstmt.executeUpdate();
 
                 pstmt.close();
+
+                number += getSaleNumber(bookId);
+                sql =  "update books set saled = ? where id = ?;";
+                pstmt = (PreparedStatement) conn.prepareStatement(sql);
+                pstmt.setInt(1, number);
+                pstmt.setInt(2, bookId);
+                pstmt.executeUpdate();
+                
+                pstmt.close();
+
             } catch (Exception e) {
                 e.printStackTrace();
                 return false;
@@ -208,7 +219,8 @@ public class BookDAOImpl implements BookDAO {
         PictureDAO pictureDAO = new PictureDAOImpl();
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "select * from books where ( name like '%"+words+"%' or author like '%"+words+"%' or introduction like '%"+words+"%');";
+            String sql = "select * from books where ( name like '%" + words + "%' or author like '%" + words
+                    + "%' or introduction like '%" + words + "%');";
 
             PreparedStatement pstmt;
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -223,7 +235,7 @@ public class BookDAOImpl implements BookDAO {
                 book.setPrice(rs.getFloat(5));
                 ArrayList<Picture> pictures = new ArrayList<Picture>();
                 pictures = pictureDAO.getPicOfBook(rs.getInt(1));
-                if(pictures!=null){
+                if (pictures != null) {
                     book.setPictures(pictures);
                     books.add(book);
                 }
@@ -269,6 +281,72 @@ public class BookDAOImpl implements BookDAO {
             return null;
         }
         return books;
+    }
+
+    @Override
+    public int getSaleNumber(int bookId) {
+        // TODO 自动生成的方法存根
+        int num = 0;
+        try {
+            Connection conn = DBHelper.getConnection();
+            String sql = "select saled from books where id = ?;";
+
+            PreparedStatement pstmt;
+            pstmt = (PreparedStatement) conn.prepareStatement(sql);
+            pstmt.setInt(1, bookId);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                num = rs.getInt(1);
+            }
+            pstmt.close();
+        } catch (Exception e) {
+            // TODO 自动生成的 catch 块
+            e.printStackTrace();
+        }
+
+        return num;
+    }
+
+    @Override
+    public boolean setBookNumber(int bookId, int schoolId, int num) {
+        // TODO 自动生成的方法存根
+        try {
+            Connection conn = DBHelper.getConnection();
+            String sql = "select number from warehouse where schoolid=? and bookid=?;";
+            //
+
+            PreparedStatement pstmt;
+            pstmt = (PreparedStatement) conn.prepareStatement(sql);
+            pstmt.setInt(1, schoolId);
+            pstmt.setInt(2, bookId);
+
+            ResultSet rs = pstmt.executeQuery();
+            
+            if(!rs.next()){
+                pstmt.close();
+                sql = "insert into warehouse (schoolid, bookid, number) values (?,?,?);";
+                pstmt = (PreparedStatement) conn.prepareStatement(sql);
+                pstmt.setInt(1, schoolId);
+                pstmt.setInt(2, bookId);
+                pstmt.setInt(3, num);
+                pstmt.execute();
+            }else{
+                pstmt.close();
+                sql =  "update warehouse set number=? where bookid=? and schoolid=?;";
+                pstmt = (PreparedStatement) conn.prepareStatement(sql);
+                pstmt.setInt(1, num);
+                pstmt.setInt(2, bookId);
+                pstmt.setInt(3, schoolId);
+                pstmt.executeUpdate();
+            }
+
+            pstmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
 }
