@@ -2,23 +2,20 @@ package entity;
 
 import util.DateHelper;
 
-public class Comment {
+public class History {
 
     private int id;
     private String account;
     private int bookId;
-    private String content;
     private String date;
 
-    public Comment() {
-
+    public History() {
+        super();
     }
 
-    public Comment(String account, int bookId, String content) {
-        super();
+    public History(String account, int bookId) {
         this.account = account;
         this.bookId = bookId;
-        this.content = content;
         date = DateHelper.getDate();
     }
 
@@ -46,14 +43,6 @@ public class Comment {
         this.bookId = bookId;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public String getDate() {
         return date;
     }
@@ -63,9 +52,8 @@ public class Comment {
     }
     
     public String toString(){
-        String str = "Account: " + account + "      Book Id: " + bookId + "\n" + 
-                             "Content: " + content + "\n" +
-                             "Date: " + date + "\n";
+        String str = "Id: " + id + "   Account: " + account + "   Book id: " + bookId + "\n" +
+                             "Date: " + date;
         return str;
     }
 }

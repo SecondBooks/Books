@@ -5,6 +5,12 @@ public class School {
 	private int schoolId;
 	private String schoolName;
 	
+	public School(){}
+	
+	public School(String name){
+	    schoolName = name;
+	}
+	
 	public int getSchoolId() {
 		return schoolId;
 	}

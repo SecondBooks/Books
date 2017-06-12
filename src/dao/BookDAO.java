@@ -12,8 +12,12 @@ public interface BookDAO {
 	public boolean delBook(int bookId);
 	//修改价格
 	public boolean changePrice(int bookId, float price);
+	//设置书的库存
+	public boolean setBookNumber(int bookId, int schoolId, int num);
 	//获取书的库存
 	public int getBookNumber(int bookId, int schoolId);
+	//获取销量
+	public int getSaleNumber(int bookId);
 	//修改书的信息
 	public boolean changeInfomation(Book book);
 	//购买书时对书的库存进行操作

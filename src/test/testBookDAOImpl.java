@@ -23,9 +23,9 @@ public class testBookDAOImpl {
         bookDAO.addBook(book);
     }
 
-   @Test
+   //@Test
     public void testDelBook() {
-        fail("ипн╢й╣ож");
+        bookDAO.delBook(2);
     }
 
     //@Test
@@ -85,5 +85,19 @@ public class testBookDAOImpl {
             System.out.println(book.toString());
         }
     }
+    
+   // @Test
+    public void testGetSaleNumber(){
+        System.out.println("id 2 saled : "+bookDAO.getSaleNumber(2));
+        System.out.println("id 2 number in school 2 : "+bookDAO.getBookNumber(2, 2));
+        bookDAO.buyBooks(2, 2, 10);
+        System.out.println("id 2 saled : "+bookDAO.getSaleNumber(2));
+        System.out.println("id 2 number in school 2 : "+bookDAO.getBookNumber(2, 2));
+    }
 
+    //@Test
+    public void testSetBookNumber(){
+        bookDAO.setBookNumber(2, 1, 40);
+        bookDAO.setBookNumber(2, 2, 40);
+    }
 }

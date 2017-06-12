@@ -12,23 +12,26 @@ import util.DBHelper;
 
 public class PictureDAOImpl implements PictureDAO {
     
-    DBHelper dbh = new DBHelper();
+    //DBHelper dbh = new DBHelper();
     
     @Override
     public Boolean addPic(int bookId, Picture picture) {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "insert into pictures (bookid, id, address) values (?,?,?)";
+            //String sql = "insert into pictures (bookid, id, address) values (?,?,?)";
+            String sql = "insert into pictures (bookid, address) values (?,?)";
             PreparedStatement pstmt;
 
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
             pstmt.setInt(1, bookId);
-            pstmt.setInt(2, picture.getPicId());
-            pstmt.setString(3, picture.getPicAddress());
+            pstmt.setString(2, picture.getPicAddress());
+            //pstmt.setInt(2, picture.getPicId());
+            //pstmt.setString(3, picture.getPicAddress());
+            pstmt.execute();
             
             pstmt.close();
-            conn.close();
+        
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -41,7 +44,8 @@ public class PictureDAOImpl implements PictureDAO {
         // TODO 自动生成的方法存根
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "delete from pictures where id = '" + picId + "';";
+            //String sql = "delete from pictures where id = '" + picId + "';";
+            String sql = "delete from pictures where id = " + picId + ";";
             PreparedStatement pstmt;
             
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -50,7 +54,7 @@ public class PictureDAOImpl implements PictureDAO {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return false;
         }
         return true;
     }
@@ -61,7 +65,8 @@ public class PictureDAOImpl implements PictureDAO {
         Picture pic = new Picture();
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "select id, address from pictures where id = '" + picId + "';";
+            //String sql = "select id, address from pictures where id = '" + picId + "';";
+            String sql = "select id, address from pictures where id = " + picId + ";";
             PreparedStatement pstmt;
             
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
@@ -86,7 +91,7 @@ public class PictureDAOImpl implements PictureDAO {
         ArrayList<Picture> pics = new ArrayList<Picture>();
         try {
             Connection conn = DBHelper.getConnection();
-            String sql = "select id, address from pictures;";
+            String sql = "select id, address from pictures where bookid = "+ bookId +";";
             PreparedStatement pstmt;
             
             pstmt = (PreparedStatement) conn.prepareStatement(sql);
